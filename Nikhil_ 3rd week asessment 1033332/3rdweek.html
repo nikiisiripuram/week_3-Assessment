@@ -1,0 +1,440 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f0f0f0;
+        }
+
+        /* CSS to make the checkbox smaller */
+        .small-checkbox {
+            width: 20px; /* Adjust the width as needed */
+            height: 20px; /* Adjust the height as needed */
+        }
+
+        .task-card {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .priority-high {
+            background-color: #ffcccc; /* Red for high priority */
+        }
+
+        .priority-medium {
+            background-color: #ffe0b2; /* Orange for medium priority */
+        }
+
+        .priority-low {
+            background-color: #ccffcc; /* Green for low priority */
+        }
+
+        .completed-task {
+            background-color: #d3d3d3; /* Gray for completed tasks */
+        }
+
+        .task-description {
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Custom CSS to make <h3> headings bold */
+        .task-card h3 {
+            font-weight: bold;
+        }
+
+        /* Add this CSS animation to your existing styles */
+        .task-card {
+            /* Other styles... */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ... Rest of your CSS styles ... */
+    </style>
+
+    <style>
+        /* Custom Styles */
+        body {
+                background-image: url(''); /* Replace 'your-image-url.jpg' with the actual URL or path to your image */
+                background-size: cover; /* Cover the entire viewport */
+                background-repeat: no-repeat; /* Prevent the image from repeating */
+                background-attachment: fixed; /* Keep the background fixed while scrolling */
+                background-color: #c97f7f; /* Fallback background color */
+        }
+
+        /* ... Rest of your CSS styles ... */
+    </style>
+</head>
+<body>
+    <body style="background-color: #f0f0f0;"> 
+        <header class="header bg-dark">
+            <div class="container-fluid">
+                <h1 class="titleName bg-dark text-white" style="font-size: 60px;">
+                    <img class="logo" src="logo.jpeg" alt="logo" width="100" height="100"> Catch up with Time
+                </h1>
+            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item float-start">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item float-start">
+                    <a class="nav-link" href="contactus.html">Contact Us</a>
+                </li>
+                <li class="nav-item float-start">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</header>
+<h1 class="text-center font-weight-bold">To-Do List</h1>
+<div class="todo-container">
+    <h2>Why Use To-Do Lists?</h2>
+    <ul>
+        <li><strong>Organization:</strong> To-do lists help you keep track of all the tasks you need to complete. They act as a visual roadmap for your day, week, or month.</li>
+        <li><strong>Prioritization:</strong> By listing tasks in order of importance, you can ensure that you tackle the most critical items first, increasing your efficiency.</li>
+        <li><strong>Reduced Stress:</strong> The act of writing down your tasks can clear your mind and reduce anxiety. Knowing that everything is documented provides a sense of control.</li>
+        <li><strong>Motivation:</strong> Crossing items off your list can be highly motivating. It provides a sense of accomplishment and encourages you to keep going.</li>
+    </ul>
+
+    <h2>Tips for Effective To-Do Lists:</h2>
+    <ul>
+        <li><strong>Keep It Manageable:</strong> Avoid overwhelming yourself with a long list. Focus on a reasonable number of tasks to maintain productivity and reduce stress.</li>
+        <li><strong>Prioritize:</strong> Identify the most important tasks and complete them first. Use techniques like the Eisenhower Matrix (urgent-important) to categorize tasks.</li>
+        <li><strong>Break It Down:</strong> For complex tasks, break them into smaller, actionable steps. This makes tasks feel more achievable.</li>
+        <li><strong>Set Realistic Deadlines:</strong> Assign deadlines to tasks to create a sense of urgency. Be realistic about what you can accomplish in a given time frame.</li>
+        <li><strong>Review and Adjust:</strong> Regularly review and update your to-do list. Priorities can change, and new tasks may arise.</li>
+    </ul>
+
+    <h2>To-Do List Apps:</h2>
+    <ul>
+        <li><strong>Todoist:</strong> A popular task management app with features for organizing tasks, setting deadlines, and collaborating with others.</li>
+        <li><strong>Microsoft To Do:</strong> Integrates seamlessly with Microsoft Office applications and offers task organization and scheduling.</li>
+        <li><strong>Trello:</strong> A visual task management tool that uses boards, lists, and cards for a flexible approach to task tracking.</li>
+    </ul>
+
+    <!-- Clock icon for hover animation -->
+    <div class="clock-icon" style="font-size: 24px; margin-top: 20px;">
+        ⏰
+    </div>
+</div>
+
+<!-- Navigation Buttons -->
+<button id="showAll">Show All Tasks</button>
+<button id="showPending">Show Pending Tasks</button>
+<button id="showCompleted">Show Completed Tasks</button>
+<div class="container">
+    <div class="row">
+    <div class="col-3">
+    <!-- Content for the left column -->
+    </div>
+    <div class="col-8">
+    <!-- Content for the right column -->
+    </div>
+    </div>
+    </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Form to Add New Task -->
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskName"><b>Task Name</b></label>
+                    <input type="text" class="form-control" id="taskName" required>
+                </div>
+                <div class="form-group">
+                    <label for="priority"><b>Priority</b></label>
+                    <select class="form-control" id="priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="completed" class="checkbox-label"><b>Completed</b></label>
+                    <input type="checkbox" class="form-control small-checkbox" id="completed">
+                </div>
+
+                <div class="form-group">
+                    <label for="taskTime"><b>Time</b> </label>
+                    <input type="number" class="form-control" id="taskTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription"><b>Task Description</b></label>
+                    <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-4" id="taskList">
+        <!-- Task cards will be displayed here -->
+    </div>
+</div>
+
+<!-- Task Details Modal -->
+<div class="modal fade" id="taskDetailsModal" tabindex="-1" role="dialog" aria-labelledby="taskDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="taskDetailsModalLabel"><b>Task Details</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="taskDetailsContent">
+                <!-- Task details will be displayed here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Task Completed Modal -->
+<div class="modal fade" id="taskCompletedModal" tabindex="-1" role="dialog" aria-labelledby="taskCompletedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="taskCompletedModalLabel"><b>Task Completed!</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="rewardMessage">
+                <!-- Reward message will be displayed here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<h1></h1>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Array to store tasks
+    const tasks = [];
+
+    // Function to render tasks
+    function renderTasks() {
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+
+        tasks.forEach((task, index) => {
+            const taskCard = document.createElement('div');
+            taskCard.classList.add('col-md-6');
+            taskCard.classList.add('task-card');
+            taskCard.classList.add(`priority-${task.priority}`);
+            if (task.status === 'Completed') {
+                taskCard.classList.add('completed-task');
+            }
+            taskCard.innerHTML = `
+                    <h3>${task.name}</h3>
+                    <p class="task-description">${task.description}</p>
+                    <p>Status: <span class="status">${task.status}</span></p>
+                    <p>Priority: <span class="priority">${task.priority}</span></p>
+                    <p>Time: <span class="time">${task.time} hours</span></p>
+                    <button class="btn btn-danger" onclick="deleteTask(${index})">Delete</button>
+                `;
+            // Add click event to display task details in the modal
+            taskCard.addEventListener('click', () => displayTaskDetails(index));
+            taskList.appendChild(taskCard);
+        });
+    }
+
+    // Function to display task details in a modal
+    function displayTaskDetails(index) {
+        const task = tasks[index];
+        const taskDetailsContent = document.getElementById('taskDetailsContent');
+        taskDetailsContent.innerHTML = `
+                <h3>${task.name}</h3>
+                <p class="task-description">${task.description}</p>
+                <p>Status: <span class="status">${task.status}</span></p>
+                <p>Priority: <span class="priority">${task.priority}</span></p>
+                <p>Time: <span class="time">${task.time} hours</span></p>
+            `;
+        $('#taskDetailsModal').modal('show');
+    }
+
+    // Function to add a new task
+    function addTask(name, priority, completed, time, description) {
+        tasks.push({ name, priority, status: completed ? 'Completed' : 'Pending', time: time + '', description });
+        renderTasks();
+    }
+
+    // Function to delete a task
+    function deleteTask(index) {
+        tasks.splice(index, 1);
+        renderTasks();
+    }
+
+    // Function to update task status
+    function updateTaskStatus(index) {
+        tasks[index].status = document.getElementById(`task${index}-completed`).checked ? 'Completed' : 'Pending';
+        renderTasks();
+    }
+
+    // Function to show all tasks
+    function showAllTasks() {
+        alert("Showing All Tasks");
+        renderTasks();
+    }
+
+    // Function to show pending tasks
+    function showPendingTasks() {
+        const pendingTasks = tasks.filter(task => task.status === 'Pending');
+        displayFilteredTasks(pendingTasks, "Showing Pending Tasks");
+    }
+
+    // Function to show completed tasks
+    function showCompletedTasks() {
+        const completedTasks = tasks.filter(task => task.status === 'Completed');
+        displayFilteredTasks(completedTasks, "Showing Completed Tasks");
+    }
+
+    // Function to display filtered tasks
+    function displayFilteredTasks(filteredTasks, message) {
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+
+        filteredTasks.forEach((task, index) => {
+            const taskCard = document.createElement('div');
+            taskCard.classList.add('col-md-4');
+            taskCard.classList.add('task-card');
+            taskCard.classList.add(`priority-${task.priority}`);
+            taskCard.classList.add('completed-task');
+            taskCard.innerHTML = `
+                    <h3>${task.name}</h3>
+                    <p class="task-description">${task.description}</p>
+                    <p>Status: <span class="status">${task.status}</span></p>
+                    <p>Priority: <span class="priority">${task.priority}</span></p>
+                    <p>Time: <span class="time">${task.time}</span></p>
+                `;
+            taskList.appendChild(taskCard);
+        });
+
+        alert(message);
+    }
+
+    // Event listener for form submission
+    const taskForm = document.getElementById('taskForm');
+    taskForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const taskName = document.getElementById('taskName').value;
+        const priority = document.getElementById('priority').value;
+        const completed = document.getElementById('completed').checked;
+        const time = parseFloat(document.getElementById('taskTime').value);
+        const description = document.getElementById('taskDescription').value;
+        addTask(taskName, priority, completed, time, description);
+        taskForm.reset();
+    });
+
+    // Initial rendering of tasks
+    renderTasks();
+
+    // Event listeners for navigation buttons using jQuery
+    $('#showAll').click(function () {
+        showAllTasks();
+    });
+
+    $('#showPending').click(function () {
+        showPendingTasks();
+    });
+
+    $('#showCompleted').click(function () {
+        showCompletedTasks();
+    });
+
+    // Declare editingTaskIndex at the beginning of your script
+    let editingTaskIndex = -1;
+
+    // Function to open the edit task modal
+    function openEditTaskModal(index) {
+        editingTaskIndex = index; // Set the index of the task being edited
+        const task = tasks[index];
+        const editTaskContent = document.getElementById('editTaskContent');
+        editTaskContent.innerHTML = `
+            <!-- Your existing code for the edit form -->
+        `;
+        $('#editTaskModal').modal('show');
+    }
+
+    taskCard.innerHTML = `
+        <h3>${task.name}</h3>
+        <p class="task-description">${task.description}</p>
+        <!-- Add an edit button -->
+        <button class="btn btn-warning" onclick="openEditTaskModal(${index})">Edit</button>
+        <!-- Other task details and delete button... -->
+    `;
+
+    function openEditTaskModal(index) {
+        editingTaskIndex = index; // Set the index of the task being edited
+        const task = tasks[index];
+        const editTaskContent = document.getElementById('editTaskContent');
+        editTaskContent.innerHTML = `
+        <!-- Edit task form will be displayed here -->
+        `;
+    }
+
+    taskCard.innerHTML = `
+        <h3>${task.name}</h3>
+        <p class="task-description">${task.description}</p>
+        <!-- Add an edit button -->
+        <button class="btn btn-warning" onclick="openEditTaskModal(${index})">Edit</button>
+        <!-- Other task details and delete button... -->
+    `;
+    // Function to update task status
+function updateTaskStatus(index) {
+    const checkbox = document.getElementById(`task${index}-completed`);
+    const taskStatus = checkbox.checked ? 'Completed' : 'Pending';
+    tasks[index].status = taskStatus;
+    renderTasks();
+    
+    // Display an alert if the task is marked as completed
+    if (taskStatus === 'Completed') {
+        alert('Task completed!');
+    }
+}
+
+</script>
+<!-- ... Previous HTML code ... -->
+
+<!-- Footer -->
+<footer class="text-center mt-5">
+    <p>&copy; 2023 Your To-Do List App</p>
+</footer>
+</body>
+</html>
+
+</body>
+</html>

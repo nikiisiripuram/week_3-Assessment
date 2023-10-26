@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+}
+
+#task-input {
+    display: flex;
+}
+
+#new-task {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#add-task {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.completed {
+    background-color: #d9f0e6; /* Background color for completed tasks */
+}
+
+.delete-button {
+    background-color: #ff4242;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* Add any additional CSS styles here */
+
+/* Style for completed tasks */
+.completed {
+    text-decoration: line-through;
+}
+
+/* Adjust spacing between tasks */
+.list-group-item {
+    margin-bottom: 10px;
+}
+/* Add any additional CSS styles here */
+
+/* Adjust spacing */
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+/* Style for completed tasks */
+.completed {
+    text-decoration: line-through;
+}
+
+/* Progress bar */
+.progress-bar {
+    height: 10px;
+    border-radius: 0;
+}
